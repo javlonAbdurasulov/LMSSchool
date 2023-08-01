@@ -5,7 +5,10 @@ namespace LMSSchool.Services.Classes;
 
 internal class SubjectCRUDService : ISubjectCRUDService
 {
-    private List<Subject> _subjects = new List<Subject>();
+    private List<Subject> _subjects = new List<Subject>()
+    {
+
+    };
     public void Create(Subject obj)
     {
         _subjects.Add(obj);
