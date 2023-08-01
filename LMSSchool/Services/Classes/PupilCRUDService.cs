@@ -1,5 +1,7 @@
 ﻿using LMSSchool.Models;
 using LMSSchool.Services.Intefaces;
+using System.Linq;
+using System.Security;
 
 namespace LMSSchool.Services.Classes
 {
@@ -15,16 +17,23 @@ namespace LMSSchool.Services.Classes
 
         public Dictionary<string, double> AvaregeGrade(IEnumerable<Pupil> pupils)
         {
-            Dictionary<string,double> avaregeGrade = new();
-            foreach (var pupil in pupils)
-            {
-                foreach (var item in pupil.Subjects)
-                {
-                    var avarage = item.Grades.Average(x=>x);
-                    avaregeGrade.Add(pupil.Name+" "+item.Name+" => ", avarage);
-                }
-            }
-            return avaregeGrade;
+
+            ////Dictionary<string,double> avaregeGrade = new();
+            ////foreach (var pupil in pupils)
+            ////{
+            ////    foreach (var item in pupil.Subjects)
+            ////    {
+            ////        var avarage = item.Grades.Average(x=>x);
+            ////        avaregeGrade.Add(pupil.Name+" "+item.Name+" => ", avarage);
+            ////    }
+            ////}
+
+            //avaregeGrade = pupils.ToDictionary(p => p.Name, p => p.Subjects.Average(s => s.Grades.Average(x => (double)x)));
+
+            
+            
+
+            return pupils.ToDictionary(p => p.Name, p => p.Subjects.Average(s => s.Grades.Average(x => (double)x))); 
         }
 
         public Dictionary<string, IEnumerable<byte>> CountOfFiveGradesForEachSubject(IEnumerable<Pupil> pupils)
