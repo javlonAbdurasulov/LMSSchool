@@ -53,7 +53,6 @@ namespace LMSSchool.Services.Classes
         }
         public void Update(Pupil obj)
         {
-
             int index = _pupils.FindIndex(x => x.Id.Equals(obj.Id));
             _pupils[index] = obj;
         }

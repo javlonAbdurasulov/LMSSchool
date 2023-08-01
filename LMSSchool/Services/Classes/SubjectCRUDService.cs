@@ -5,28 +5,40 @@ namespace LMSSchool.Services.Classes;
 
 internal class SubjectCRUDService : ISubjectCRUDService
 {
+    private List<Subject> _subjects = new List<Subject>();
     public void Create(Subject obj)
     {
-        throw new NotImplementedException();
+        _subjects.Add(obj);
     }
 
     public void Delete(Guid id)
     {
-        throw new NotImplementedException();
+        var removedSubject = _subjects.FirstOrDefault(p => p.Id.Equals(id));
+        if (removedSubject != null)
+        {
+            _subjects.Remove(removedSubject);
+        }
+        else
+        {
+            throw new Exception($"Id= {id} fan topilmadi!");
+        }
     }
 
     public IEnumerable<Subject> GetAll()
     {
-        throw new NotImplementedException();
+        return _subjects;
     }
 
     public Subject GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var SelectedSubject = _subjects.FirstOrDefault(p => p.Id.Equals(id));
+        if (SelectedSubject == null) throw new Exception($"Id= {id} fan topilmadi!");
+        return SelectedSubject;
     }
 
     public void Update(Subject obj)
     {
-        throw new NotImplementedException();
+        int index = _subjects.FindIndex(x => x.Id.Equals(obj.Id));
+        _subjects[index] = obj;
     }
 }
