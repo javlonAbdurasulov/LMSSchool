@@ -29,6 +29,7 @@ internal class SubjectCRUDService : ISubjectCRUDService
 
     public IEnumerable<Subject> GetAll()
     {
+        //s
         return _subjects;
     }
 
