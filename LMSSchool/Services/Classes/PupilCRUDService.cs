@@ -6,6 +6,12 @@ namespace LMSSchool.Services.Classes
     internal class PupilCRUDService : IPupilCRUDService
     {
         private List<Pupil> _pupils = new();
+        //{
+        //    new Pupil() { Name="John",Subjects={ new Subject() { Name="Maths",Grades = { 5,4,3} }, new Subject() { Name = "Science", Grades = { 3, 4, 5 } } } },
+        //    new Pupil() { Name="Jane",Subjects={ new Subject() { Name="Science",Grades = { 3,4,5} }, new Subject() { Name = "History", Grades = { 5, 5, 5 } } } },
+        //    new Pupil() { Name="Jack",Subjects={ new Subject() { Name="History",Grades = { 2,3,4} }, new Subject() { Name = "Science", Grades = { 3, 4, 5 } }, } }
+        //};
+
         public Dictionary<string, byte> AvaregeGrade()
         {
             throw new NotImplementedException();

@@ -37,10 +37,10 @@ internal class PupilManager
                     break;
                 case 1:
 
-                    //   _pupilCRUDService.Create();
+                    _pupilCRUDService.Create(new Pupil());
                     break;
                 case 2:
-                    //  TaomlarniKorish();
+                    PrintPupil(_pupilCRUDService.GetAll());
                     break;
                 case 3:
                     Pupil pupil = new();
@@ -66,6 +66,19 @@ internal class PupilManager
             }
 
             Console.WriteLine();
+        }
+
+    }
+    private static void PrintPupil(IEnumerable<Pupil> pupilOUT)
+    {
+        foreach (var item in pupilOUT)
+        {
+            Console.WriteLine(item);
+
+            foreach (var item2 in item)
+            {
+                Console.WriteLine(item2);
+            }
         }
     }
 }
