@@ -49,16 +49,17 @@ internal class PupilManager
 
                     break;
                 case 4:
-                    //  TaomniOchirish();
+                    Console.WriteLine("Id pupil for delete:\n");
+                    _pupilCRUDService.Delete(Guid.Parse(Console.ReadLine()));
                     break;
                 case 5:
-                    //  EngQimmatOvqat();
+                    Console.WriteLine("The bes Pupil is "+_pupilCRUDService.TheBestPupil().Name);
                     break;
                 case 6:
-                    //  EngKopBuyurtma();
+                    _pupilCRUDService.CountOfFiveGradesForEachSubject(_pupilCRUDService.GetAll());
                     break;
                 case 7:
-                    //  EngKamBuyurtma();
+                    PrintAvaregeGrade(_pupilCRUDService.AvaregeGrade(_pupilCRUDService.GetAll()));
                     break;
                 default:
                     Console.WriteLine("Noto'g'ri tanlov!");
@@ -69,6 +70,15 @@ internal class PupilManager
         }
 
     }
+
+    private static void PrintAvaregeGrade(Dictionary<string, double> res)
+    {
+        foreach (var item in res)
+        {
+            Console.WriteLine(item.Key+ " " + item.Value);
+        }
+    }
+
     private static void PrintPupil(IEnumerable<Pupil> pupilOUT)
     {
         foreach (var item in pupilOUT)
@@ -81,4 +91,17 @@ internal class PupilManager
             }
         }
     }
+    //private static void PrintPupil(Pupil pupilOUT)
+    //{
+    //    foreach (var item in pupilOUT)
+    //    {
+    //        Console.WriteLine(item);
+    //        item.
+
+    //        foreach (var item2 in item)
+    //        {
+    //            Console.WriteLine(item2);
+    //        }
+    //    }
+    //}
 }

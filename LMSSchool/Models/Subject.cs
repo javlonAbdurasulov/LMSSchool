@@ -27,6 +27,7 @@ internal class Subject
     public List<byte> Grades { get; set; }
     public override string ToString()
     {
+        Console.WriteLine("\tSubjects:");
         string cw = $"Name Subject: {Name} \nID: {Id}\nGrades: ";
         foreach (byte grade in Grades) {
             cw+=(grade.ToString()+" ");

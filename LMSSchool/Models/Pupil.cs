@@ -25,7 +25,7 @@ internal class Pupil:IEnumerable
     }
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
-    public List<Subject> Subjects { get; set; } 
+    public List<Subject> Subjects { get; set; }
 
     public IEnumerator GetEnumerator()
     {
@@ -34,7 +34,8 @@ internal class Pupil:IEnumerable
 
     public override string ToString()
     {
-        return $"Name student: {Name}\nID: {Id}\n\tSubjects:";
+        return $"\nName student: {Name}\nID: {Id}";
     }
+
 
 }

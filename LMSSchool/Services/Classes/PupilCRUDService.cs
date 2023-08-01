@@ -5,6 +5,7 @@ namespace LMSSchool.Services.Classes
 {
     internal class PupilCRUDService : IPupilCRUDService
     {
+        
         private List<Pupil> _pupils = new();
         //{
         //    new Pupil() { Name="John",Subjects={ new Subject() { Name="Maths",Grades = { 5,4,3} }, new Subject() { Name = "Science", Grades = { 3, 4, 5 } } } },
@@ -12,12 +13,21 @@ namespace LMSSchool.Services.Classes
         //    new Pupil() { Name="Jack",Subjects={ new Subject() { Name="History",Grades = { 2,3,4} }, new Subject() { Name = "Science", Grades = { 3, 4, 5 } }, } }
         //};
 
-        public Dictionary<string, byte> AvaregeGrade()
+        public Dictionary<string, double> AvaregeGrade(IEnumerable<Pupil> pupils)
         {
-            throw new NotImplementedException();
+            Dictionary<string,double> avaregeGrade = new();
+            foreach (var pupil in pupils)
+            {
+                foreach (var item in pupil.Subjects)
+                {
+                    var avarage = item.Grades.Average(x=>x);
+                    avaregeGrade.Add(pupil.Name+" "+item.Name+" => ", avarage);
+                }
+            }
+            return avaregeGrade;
         }
 
-        public Dictionary<string, IEnumerable<byte>> CountOfFiveGradesForEachSubject()
+        public Dictionary<string, IEnumerable<byte>> CountOfFiveGradesForEachSubject(IEnumerable<Pupil> pupils)
         {
             throw new NotImplementedException();
         }
@@ -54,8 +64,7 @@ namespace LMSSchool.Services.Classes
 
         public Pupil TheBestPupil()
         {
-            return _pupils.OrderBy(x => x.Subjects.Max(s => s.Grades.Count(g => g.Equals(5)))).FirstOrDefault();
-
+            return _pupils.OrderByDescending(x => x.Subjects.Max(s => s.Grades.Count(g => g.Equals(5)))).FirstOrDefault();
         }
         public void Update(Pupil obj)
         {
